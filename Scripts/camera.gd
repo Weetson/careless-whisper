@@ -3,14 +3,15 @@ extends Camera3D
 var last_rotation : Vector3 = Vector3.ZERO
 var chance_to_spawn : float = 0.1  # Шанс появления (10%)
 var tween : Tween = null
+var enemy_spawned = false
 
 func _process(delta):
 	var rotation_difference = (global_transform.basis.get_euler() - last_rotation).length()
-	spawn_enemy()
-	#if rotation_difference > 3.14 / 6:  # Проверяем поворот на 30 градусов
-		#last_rotation = global_transform.basis.get_euler()
-		#if randf() < chance_to_spawn:
+	if rotation_difference > 3.14 / 6:  # Проверяем поворот на 30 градусов
+		last_rotation = global_transform.basis.get_euler()
+		if randf() < chance_to_spawn and not enemy_spawned:
 			#spawn_enemy()
+			enemy_spawned = true
 
 func spawn_enemy():
 	# Enemy scene load
@@ -21,7 +22,7 @@ func spawn_enemy():
 	get_parent().add_child(enemy)
 
 	# Позиция врага перед игроком
-	enemy.global_transform.origin = global_transform.origin + global_transform.basis.z.normalized() * 5
+	enemy.global_transform.origin = global_transform.origin + global_transform.basis.z.normalized() * 1
 
 	# Воспроизводим звук врага
 	var sound = enemy.get_node("ohlob/sound")
