@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bc0p0lh18b6ty"]
+[gd_scene load_steps=9 format=3 uid="uid://bc0p0lh18b6ty"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_wxqqr"]
+[ext_resource type="Script" path="res://Scripts/camera.gd" id="2_sdo0m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_apdxf"]
 albedo_color = Color(5.53504e-07, 0.342553, 0.148678, 1)
@@ -39,7 +40,8 @@ shape = SubResource("CapsuleShape3D_yysle")
 [node name="camerapoint" type="Node3D" parent="player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
 
-[node name="Camera3D" type="Camera3D" parent="player/camerapoint"]
+[node name="camera" type="Camera3D" parent="player/camerapoint"]
+script = ExtResource("2_sdo0m")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.7, 0, 1, 5)
