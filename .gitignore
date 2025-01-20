@@ -1,0 +1,14 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Godot-specific files
+.import/
+.godot/
+*.log
+*.tmp
+
+# OS files
+*.DS_Store
+*.exe
+*.bin
