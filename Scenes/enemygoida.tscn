@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dpi8iulilcivs"]
 
 [ext_resource type="Texture2D" uid="uid://bu7c1lqnro1oi" path="res://Models/ohlob.png" id="1_ja416"]
-[ext_resource type="AudioStream" uid="uid://c66v6yy20shis" path="res://Audios/1.mp3" id="2_wt87i"]
+[ext_resource type="AudioStream" uid="uid://fvega0xfp2xd" path="res://Audios/3.mp3" id="2_n0ugt"]
 
 [node name="enemygoida" type="Node3D"]
 
@@ -10,4 +10,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 texture = ExtResource("1_ja416")
 
 [node name="sound" type="AudioStreamPlayer3D" parent="ohlob"]
-stream = ExtResource("2_wt87i")
+stream = ExtResource("2_n0ugt")
