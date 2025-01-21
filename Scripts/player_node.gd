@@ -67,5 +67,12 @@ func focus_camera_on(target_position: Vector3):
 
 # fucntion with lerp
 func lerp_rotate_camera(speed, delta):
-	camera.look_at(enemy.global_transform.origin + Vector3(0, 0.5, 0))
+	var target_direction = (enemy.global_transform.origin - camera.global_transform.origin).normalized()
+	var current_basis = camera.global_transform.basis
+	var target_basis = Basis().looking_at(target_direction, Vector3.UP)
+	print(current_basis)
+	# Плавная интерполяция между текущим и целевым поворотом
+	#camera.global_transform.basis = current_basis.interpolate_with(target_basis, ROT_CAMERA_SPEED * delta)
+	
+	#camera.look_at(enemy.global_transform.origin + Vector3(0, 0.5, 0))
 	#camera.global_transform = camera.global_transform.interpolate_with(enemy.global_transform, speed * delta)
