@@ -4,8 +4,8 @@ extends CharacterBody3D
 const SPEED = 5
 const JUMP_VELOCITY = 4.5
 const CAMERA_ROTATION_SPEED = 0.005
-const positive_acceleration = 0.1 # ускорение в начале движения
-const negative_acceleration = 0.1 # замедления после отпускания клавиши движения
+const positive_acceleration = 0.3 # ускорение в начале движения
+const negative_acceleration = 0.5 # замедления после отпускания клавиши движения
 # vars for camera
 var rot = {"y": 0,
 			"x" : 0}
@@ -30,13 +30,15 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	print(input_dir)
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	
+	print("direction: ", direction)
 	if direction:
-		velocity.x = move_toward(velocity.x, direction.x * SPEED, 1)
-		velocity.z = move_toward(velocity.z, direction.z * SPEED, 1)
-
+		var final_speed :=  direction * SPEED
+		var normalized_acceleration := (direction * (SPEED-1))/((SPEED - 1)/positive_acceleration/2)
+		velocity.x = move_toward(velocity.x, final_speed.x, abs(normalized_acceleration.x))
+		velocity.z = move_toward(velocity.z, final_speed.z, abs(normalized_acceleration.z))
+		print("velocity after: ", velocity)
+		
 	else:
 		velocity.x = move_toward(velocity.x, 0, negative_acceleration)
 		velocity.z = move_toward(velocity.z, 0, negative_acceleration)
