@@ -9,8 +9,6 @@ var tween : Tween = null
 
 const ROT_CAMERA_SPEED = 2
 
-@onready var camera = $player/camerapoint/camera
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -19,18 +17,15 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var rotation_difference = ($player.global_transform.basis.get_euler() - last_rotation).length()
 	last_rotation = $player.global_transform.basis.get_euler()
-	#print(rotation_difference)
+	
 	
 	# Spawn enemy if have right angle
 	if rotation_difference > angle_for_spawn and randf() < chance_to_spawn and not enemy_spawned:
 		spawn_enemy()
 		enemy_spawned = true
 		
-		#print(enemy.global_transform)
-		#print(enemy.global_transform.origin)
 		# camera rotation
 		lerp_rotate_camera(ROT_CAMERA_SPEED, delta)
-		#focus_camera_on(enemy.global_transform.origin)
 		
 func spawn_enemy():
 	# Enemy scene load
@@ -41,7 +36,7 @@ func spawn_enemy():
 	get_parent().add_child(enemy)	
 		
 	# Позиция врага перед игроком
-	enemy.global_transform.origin = $player.global_transform.origin + global_transform.basis.z.normalized() * 1	
+	enemy.global_transform.origin = $player.global_transform.origin + global_transform.basis.z.normalized() * 1.2	
 		
 	# Воспроизводим звук врага
 	var sound = enemy.get_node("ohlob/sound")
@@ -54,25 +49,19 @@ func _on_sound_finished():
 	enemy_spawned = false
 	get_parent().remove_child(enemy)
 
-func focus_camera_on(target_position: Vector3):
-	# Создаём Tween динамически, если он ещё не создан
-	if not tween or not tween.is_valid():
-		tween = create_tween()
-	
-	var direction = target_position.normalized()
-	var new_basis = Basis().looking_at(direction, Vector3.UP)
-
-	# Анимируем вращение камеры через basis
-	tween.tween_property(self, "global_transform:basis", new_basis, 0.5)
-
 # fucntion with lerp
 func lerp_rotate_camera(speed, delta):
-	var target_direction = (enemy.global_transform.origin - camera.global_transform.origin).normalized()
-	var current_basis = camera.global_transform.basis
-	var target_basis = Basis().looking_at(target_direction, Vector3.UP)
-	print(current_basis)
-	# Плавная интерполяция между текущим и целевым поворотом
-	#camera.global_transform.basis = current_basis.interpolate_with(target_basis, ROT_CAMERA_SPEED * delta)
-	
-	#camera.look_at(enemy.global_transform.origin + Vector3(0, 0.5, 0))
-	#camera.global_transform = camera.global_transform.interpolate_with(enemy.global_transform, speed * delta)
+	var enemy_position = enemy.global_transform.origin
+	var camera_position = $player.global_transform.origin
+	var camera_angle = $player.global_transform.basis.get_euler()
+	Basis()
+	print(enemy_position)
+	print(camera_position)
+	print(camera_angle)
+	var diff = enemy_position - camera_position
+	print(diff)
+	var distance = ((diff.x ** 2) + (diff.z ** 2)) ** 0.5
+	print(distance)
+	var sin_dis = diff.z / distance
+	var cos_dis = diff.x / distance
+	print(asin(sin_dis), ', ', acos(cos_dis))
