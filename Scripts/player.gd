@@ -40,6 +40,12 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+func _process(delta: float) -> void:
+	if get_parent().get_node("enemygoida") != null:
+		var enemy = get_parent().get_node("enemygoida")
+		look_at(enemy.global_transform.origin)
+		print('ok')	
+
 # Camera movement
 func _input(event):
 	if event is InputEventMouseMotion:

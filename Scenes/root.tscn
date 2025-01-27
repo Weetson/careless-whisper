@@ -44,17 +44,18 @@ transform = Transform3D(0.0691123, 0.99518, 0.0695724, -0.766268, 0.00830059, 0.
 light_color = Color(0.943119, 0.967502, 0.999898, 1)
 shadow_enabled = true
 
-[node name="PlayerNode" type="Node3D" parent="."]
-script = ExtResource("1_otjo4")
-
-[node name="player" type="CharacterBody3D" parent="PlayerNode"]
+[node name="player" type="CharacterBody3D" parent="."]
 transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.7, 0, 1, 0)
 script = ExtResource("1_wxqqr")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerNode/player"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player"]
 shape = SubResource("CapsuleShape3D_yysle")
 
-[node name="camerapoint" type="Node3D" parent="PlayerNode/player"]
+[node name="camerapoint" type="Node3D" parent="player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
 
-[node name="camera" type="Camera3D" parent="PlayerNode/player/camerapoint"]
+[node name="camera" type="Camera3D" parent="player/camerapoint"]
+
+[node name="PlayerNode" type="Node3D" parent="player"]
+transform = Transform3D(1.42857, 0, 0, 0, 1, 0, 0, 0, 1.42857, 0, -1, 0)
+script = ExtResource("1_otjo4")

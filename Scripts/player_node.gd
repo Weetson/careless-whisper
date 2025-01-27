@@ -1,10 +1,10 @@
 extends Node3D
 
 var last_rotation = Vector3(0, 0, 0)
-var chance_to_spawn : float = 1  # Шанс появления (10%)
+var chance_to_spawn : float = 0.1  # Шанс появления (10%)
 var angle_for_spawn : float = 3.14 / 10
 var enemy_spawned = false
-var enemy
+var enemy : Node3D = null
 var tween : Tween = null
 
 const DISTANCE_TO_PLAYER = 1.2
@@ -16,9 +16,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var rotation_difference = ($player.global_transform.basis.get_euler() - last_rotation).length()
-	last_rotation = $player.global_transform.basis.get_euler()
-	
+	var rotation_difference = (global_transform.basis.get_euler() - last_rotation).length()
+	last_rotation = global_transform.basis.get_euler()
 	
 	# Spawn enemy if have right angle
 	if rotation_difference > angle_for_spawn and randf() < chance_to_spawn and not enemy_spawned:
@@ -26,7 +25,12 @@ func _process(delta: float) -> void:
 		enemy_spawned = true
 		
 		# camera rotation
-		lerp_rotate_camera(ROT_CAMERA_SPEED, delta)
+		#lerp_rotate_camera(ROT_CAMERA_SPEED, delta)
+		
+	if enemy:
+		enemy.look_at(global_transform.origin, Vector3(0, 1, 0))
+		enemy.rotation.x = 0
+		enemy.rotation.z = 0
 		
 func spawn_enemy():
 	# Enemy scene load
@@ -34,10 +38,10 @@ func spawn_enemy():
 	enemy = enemy_scene.instantiate()
 	
 	# Добавляем врага в ту же сцену, где находится игрок
-	get_parent().add_child(enemy)	
+	get_parent().get_parent().add_child(enemy)	
 		
 	# Позиция врага перед игроком
-	enemy.global_transform.origin = $player.global_transform.origin + global_transform.basis.z.normalized() * DISTANCE_TO_PLAYER	
+	enemy.global_transform.origin = global_transform.origin + global_transform.basis.z.normalized() * DISTANCE_TO_PLAYER	
 		
 	# Воспроизводим звук врага
 	var sound = enemy.get_node("ohlob/sound")
@@ -45,16 +49,20 @@ func spawn_enemy():
 	if sound:
 		sound.play()
 		sound.connect("finished", Callable(self, "_on_sound_finished"))
+		
+	#get_parent().look_at(enemy.global_transform.origin, Vector3(0, 1, 0))
 
 func _on_sound_finished():
 	enemy_spawned = false
-	get_parent().remove_child(enemy)
+	get_parent().get_parent().remove_child(enemy)
+	enemy.queue_free()
+	enemy = null
 
 # fucntion with lerp
 func lerp_rotate_camera(speed, delta):
 	var enemy_position = enemy.global_transform.origin
-	var camera_position = $player.global_transform.origin
-	var camera_angle = $player.global_transform.basis.get_euler()
+	var camera_position = global_transform.origin
+	var camera_angle = global_transform.basis.get_euler()
 	Basis()
 	print("enemy_position - ", enemy_position)
 	print("camera_position - ", camera_position)
