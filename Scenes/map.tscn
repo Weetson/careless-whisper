@@ -1,0 +1,299 @@
+[gd_scene load_steps=10 format=3 uid="uid://cfeaqk2ei0v0d"]
+
+[ext_resource type="Texture2D" uid="uid://wob7hxkbfhkb" path="res://Models/wall.png" id="1_s4mo7"]
+[ext_resource type="ArrayMesh" uid="uid://bc4ql3pn8evy7" path="res://Models/wall/wall.obj" id="2_1gpbu"]
+[ext_resource type="Texture2D" uid="uid://chiwo3mc02pbu" path="res://Models/hospital.jpg" id="2_cjr58"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y4kan"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nbs60"]
+albedo_texture = ExtResource("1_s4mo7")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3v3g6"]
+points = PackedVector3Array(3, 4, 0.3, 3, 4, -0.3, -3, 4, 0.3, 3, 0, 0.3, 3, 0, -0.3, -3, 4, -0.3, -3, 0, 0.3, -3, 0, -0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ly442"]
+albedo_texture = ExtResource("2_cjr58")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dsoy7"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ul1in"]
+points = PackedVector3Array(-1, 0, -1, -1, 0, 1, 1, 0, -1, 1, 0, 1)
+
+[node name="map" type="Node3D"]
+
+[node name="hospital" type="Node3D" parent="."]
+
+[node name="wall" type="MeshInstance3D" parent="hospital"]
+transform = Transform3D(-2.77549e-07, 0, -1.03792, 0, 1, 0, 6.34957, 0, -4.53689e-08, 20.4687, 0, 0)
+material_override = SubResource("StandardMaterial3D_y4kan")
+material_overlay = SubResource("StandardMaterial3D_nbs60")
+mesh = ExtResource("2_1gpbu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="hospital/wall"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hospital/wall/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_3v3g6")
+
+[node name="wall2" type="MeshInstance3D" parent="hospital"]
+transform = Transform3D(-2.98045e-08, 0, -1.03792, 0, 1, 0, 0.681847, 0, -4.53689e-08, 18.058, 0, 1.95063)
+material_override = SubResource("StandardMaterial3D_y4kan")
+material_overlay = SubResource("StandardMaterial3D_nbs60")
+mesh = ExtResource("2_1gpbu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="hospital/wall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hospital/wall2/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_3v3g6")
+
+[node name="wall14" type="MeshInstance3D" parent="hospital"]
+transform = Transform3D(-2.98045e-08, 0, -1.03792, 0, 1, 0, 0.681847, 0, -4.53689e-08, 14.0306, 0, 1.6533)
+material_override = SubResource("StandardMaterial3D_y4kan")
+material_overlay = SubResource("StandardMaterial3D_nbs60")
+mesh = ExtResource("2_1gpbu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="hospital/wall14"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hospital/wall14/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_3v3g6")
+
+[node name="wall15" type="MeshInstance3D" parent="hospital"]
+transform = Transform3D(-2.98045e-08, 0, -1.03792, 0, 1, 0, 0.681847, 0, -4.53689e-08, 8.81396, 0, 1.6533)
+material_override = SubResource("StandardMaterial3D_y4kan")
+material_overlay = SubResource("StandardMaterial3D_nbs60")
+mesh = ExtResource("2_1gpbu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="hospital/wall15"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hospital/wall15/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_3v3g6")
+
+[node name="wall16" type="MeshInstance3D" parent="hospital"]
+transform = Transform3D(-2.98045e-08, 0, -1.03792, 0, 1, 0, 0.681847, 0, -4.53689e-08, 8.81396, 0, -4.40128)
+material_override = SubResource("StandardMaterial3D_y4kan")
+material_overlay = SubResource("StandardMaterial3D_nbs60")
+mesh = ExtResource("2_1gpbu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="hospital/wall16"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hospital/wall16/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_3v3g6")
+
+[node name="wall17" type="MeshInstance3D" parent="hospital"]
+transform = Transform3D(-2.98045e-08, 0, -1.03792, 0, 1, 0, 0.681847, 0, -4.53689e-08, 14.0847, 0, -4.40128)
+material_override = SubResource("StandardMaterial3D_y4kan")
+material_overlay = SubResource("StandardMaterial3D_nbs60")
+mesh = ExtResource("2_1gpbu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="hospital/wall17"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hospital/wall17/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_3v3g6")
+
+[node name="wall18" type="MeshInstance3D" parent="hospital"]
+transform = Transform3D(0.789033, 0, 0, 0, 1, 0, 0, 0, 1.03792, 11.3817, 0, -6.21225)
+material_override = SubResource("StandardMaterial3D_y4kan")
+material_overlay = SubResource("StandardMaterial3D_nbs60")
+mesh = ExtResource("2_1gpbu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="hospital/wall18"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hospital/wall18/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_3v3g6")
+
+[node name="wall19" type="MeshInstance3D" parent="hospital"]
+transform = Transform3D(0.789033, 0, 0, 0, 1, 0, 0, 0, 1.03792, 11.3817, 0, 3.59942)
+material_override = SubResource("StandardMaterial3D_y4kan")
+material_overlay = SubResource("StandardMaterial3D_nbs60")
+mesh = ExtResource("2_1gpbu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="hospital/wall19"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hospital/wall19/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_3v3g6")
+
+[node name="wall20" type="MeshInstance3D" parent="hospital"]
+transform = Transform3D(0.66517, 0, 0, 0, 1, 0, 0, 0, 1.03792, 16.0849, 0, -0.130636)
+material_override = SubResource("StandardMaterial3D_y4kan")
+material_overlay = SubResource("StandardMaterial3D_nbs60")
+mesh = ExtResource("2_1gpbu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="hospital/wall20"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hospital/wall20/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_3v3g6")
+
+[node name="wall21" type="MeshInstance3D" parent="hospital"]
+transform = Transform3D(0.66517, 0, 0, 0, 1, 0, 0, 0, 1.03792, 16.0849, 0, -2.56328)
+material_override = SubResource("StandardMaterial3D_y4kan")
+material_overlay = SubResource("StandardMaterial3D_nbs60")
+mesh = ExtResource("2_1gpbu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="hospital/wall21"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hospital/wall21/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_3v3g6")
+
+[node name="wall22" type="MeshInstance3D" parent="hospital"]
+transform = Transform3D(0.66517, 0, 0, 0, 1, 0, 0, 0, 1.03792, 18.1932, 0, 10.4379)
+material_override = SubResource("StandardMaterial3D_y4kan")
+material_overlay = SubResource("StandardMaterial3D_nbs60")
+mesh = ExtResource("2_1gpbu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="hospital/wall22"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hospital/wall22/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_3v3g6")
+
+[node name="wall24" type="MeshInstance3D" parent="hospital"]
+transform = Transform3D(0.392926, 0, -0.559733, 0, 1, 0, 0.398883, 0, 0.551375, 13.9828, 0, 17.006)
+material_override = SubResource("StandardMaterial3D_y4kan")
+material_overlay = SubResource("StandardMaterial3D_nbs60")
+mesh = ExtResource("2_1gpbu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="hospital/wall24"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hospital/wall24/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_3v3g6")
+
+[node name="wall23" type="MeshInstance3D" parent="hospital"]
+transform = Transform3D(1.02957, 0, 0, 0, 1, 0, 0, 0, 1.03792, 17.3282, 0, 17.898)
+material_override = SubResource("StandardMaterial3D_y4kan")
+material_overlay = SubResource("StandardMaterial3D_nbs60")
+mesh = ExtResource("2_1gpbu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="hospital/wall23"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hospital/wall23/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_3v3g6")
+
+[node name="wall12" type="MeshInstance3D" parent="hospital"]
+transform = Transform3D(-0.451821, 0, 0.0046627, 0, 1, 0, -0.00202669, 0, -1.03948, 16.4092, 0, 3.84268)
+material_override = SubResource("StandardMaterial3D_y4kan")
+material_overlay = SubResource("StandardMaterial3D_nbs60")
+mesh = ExtResource("2_1gpbu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="hospital/wall12"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hospital/wall12/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_3v3g6")
+
+[node name="wall13" type="MeshInstance3D" parent="hospital"]
+transform = Transform3D(-0.298827, 0, -0.779674, 0, 1, 0, 0.338893, 0, -0.687496, 14.5712, 0, 4.68059)
+material_override = SubResource("StandardMaterial3D_y4kan")
+material_overlay = SubResource("StandardMaterial3D_nbs60")
+mesh = ExtResource("2_1gpbu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="hospital/wall13"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hospital/wall13/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_3v3g6")
+
+[node name="wall11" type="MeshInstance3D" parent="hospital"]
+transform = Transform3D(-4.99879e-08, 0, -1.04383, 0, 1.00569, 0, 1.14359, 0, -4.56272e-08, 14.0847, 0, 8.57283)
+material_override = SubResource("StandardMaterial3D_y4kan")
+material_overlay = SubResource("StandardMaterial3D_nbs60")
+mesh = ExtResource("2_1gpbu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="hospital/wall11"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hospital/wall11/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_3v3g6")
+
+[node name="wall3" type="MeshInstance3D" parent="hospital"]
+transform = Transform3D(-4.90215e-08, 0, -0.991265, 0, 0.955049, 0, 1.12148, 0, -4.33295e-08, 18.058, 0, -5.9692)
+material_override = SubResource("StandardMaterial3D_y4kan")
+material_overlay = SubResource("StandardMaterial3D_nbs60")
+mesh = ExtResource("2_1gpbu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="hospital/wall3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hospital/wall3/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_3v3g6")
+
+[node name="wall4" type="MeshInstance3D" parent="hospital"]
+transform = Transform3D(1.47336, 0, 0, 0, 1, 0, 0, 0, 1.03792, 15.7418, 0, -19.2381)
+material_override = SubResource("StandardMaterial3D_y4kan")
+material_overlay = SubResource("StandardMaterial3D_nbs60")
+mesh = ExtResource("2_1gpbu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="hospital/wall4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hospital/wall4/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_3v3g6")
+
+[node name="wall6" type="MeshInstance3D" parent="hospital"]
+transform = Transform3D(1.07899, 0, 0, 0, 1, 0, 0, 0, 1.03792, 14.4551, 0, -13.5764)
+material_override = SubResource("StandardMaterial3D_y4kan")
+material_overlay = SubResource("StandardMaterial3D_nbs60")
+mesh = ExtResource("2_1gpbu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="hospital/wall6"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hospital/wall6/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_3v3g6")
+
+[node name="wall5" type="MeshInstance3D" parent="hospital"]
+transform = Transform3D(-4.64671e-08, 0, 1.03792, 0, 1, 0, -1.06304, 0, -4.53689e-08, 11.0666, 0, -16.7504)
+material_override = SubResource("StandardMaterial3D_y4kan")
+material_overlay = SubResource("StandardMaterial3D_nbs60")
+mesh = ExtResource("2_1gpbu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="hospital/wall5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hospital/wall5/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_3v3g6")
+
+[node name="wall7" type="MeshInstance3D" parent="hospital"]
+transform = Transform3D(-2.6926e-08, 0, 1.03792, 0, 1, 0, -0.615994, 0, -4.53689e-08, 15.3558, 0, -15.5065)
+material_override = SubResource("StandardMaterial3D_y4kan")
+material_overlay = SubResource("StandardMaterial3D_nbs60")
+mesh = ExtResource("2_1gpbu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="hospital/wall7"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hospital/wall7/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_3v3g6")
+
+[node name="wall8" type="MeshInstance3D" parent="hospital"]
+transform = Transform3D(-4.21427e-08, 0, 1.03792, 0, 1, 0, -0.964112, 0, -4.53689e-08, 15.7342, 0, -10.452)
+material_override = SubResource("StandardMaterial3D_y4kan")
+material_overlay = SubResource("StandardMaterial3D_nbs60")
+mesh = ExtResource("2_1gpbu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="hospital/wall8"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hospital/wall8/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_3v3g6")
+
+[node name="wall9" type="MeshInstance3D" parent="hospital"]
+transform = Transform3D(-1.90196e-08, 0, 1.03792, 0, 1, 0, -0.435118, 0, -4.53689e-08, 17.7884, 0, -12.5063)
+material_override = SubResource("StandardMaterial3D_y4kan")
+material_overlay = SubResource("StandardMaterial3D_nbs60")
+mesh = ExtResource("2_1gpbu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="hospital/wall9"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hospital/wall9/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_3v3g6")
+
+[node name="wall10" type="MeshInstance3D" parent="hospital"]
+transform = Transform3D(0.435118, 0, 0, 0, 1, 0, 0, 0, 1.03792, 17.2479, 0, -7.8572)
+material_override = SubResource("StandardMaterial3D_y4kan")
+material_overlay = SubResource("StandardMaterial3D_nbs60")
+mesh = ExtResource("2_1gpbu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="hospital/wall10"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hospital/wall10/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_3v3g6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-8.74228e-07, 0, 20, 0, 20, 0, -20, 0, -8.74228e-07, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_ly442")
+mesh = SubResource("PlaneMesh_dsoy7")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_ul1in")

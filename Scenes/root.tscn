@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bc0p0lh18b6ty"]
+[gd_scene load_steps=10 format=3 uid="uid://bc0p0lh18b6ty"]
 
 [ext_resource type="Script" path="res://Scripts/player_node.gd" id="1_otjo4"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_wxqqr"]
+[ext_resource type="PackedScene" uid="uid://cfeaqk2ei0v0d" path="res://Scenes/map.tscn" id="3_63n41"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_apdxf"]
 albedo_color = Color(5.53504e-07, 0.342553, 0.148678, 1)
@@ -59,3 +60,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
 [node name="PlayerNode" type="Node3D" parent="player"]
 transform = Transform3D(1.42857, 0, 0, 0, 1, 0, 0, 0, 1.42857, 0, -1, 0)
 script = ExtResource("1_otjo4")
+
+[node name="map" parent="." instance=ExtResource("3_63n41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.188648, 0, -30.3702)
